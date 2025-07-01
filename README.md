@@ -87,6 +87,10 @@
 - **RG-316 Coax:** 3 turns through core (impedance ratio = N²)
 - **#14 AWG Wire:** 6 turns trifilar winding (3 parallel wires)
 - **Stacked Cores:** Same turn count, wire passes through both cores
+- 
+
+##  Coax connections, turns not shown:
+![Compensated Balun Point Image](https://github.com/Supermagnum/Compensated-balun/blob/main/punktbilde.jpg)
 
 **Why Different Turn Counts:**
 - Coax has inherent transmission line properties
