@@ -14,6 +14,7 @@
 
 ##  Coax connections, turns not shown:
 ![Compensated Balun Point Image](https://github.com/Supermagnum/Compensated-balun/blob/main/punktbilde.jpg)
+The red blocks are the cores.
 
 ## Configuration 1: 2× FT240-52 Stacked Cores
 
