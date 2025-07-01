@@ -15,6 +15,7 @@
 ##  Coax connections, turns not shown:
 ![Compensated Balun Point Image](https://github.com/Supermagnum/Compensated-balun/blob/main/punktbilde.jpg)
 The red blocks are the cores.
+RG-316 Coax or TFLEX-405.
 
 ## Configuration 1: 2× FT240-52 Stacked Cores
 
@@ -266,6 +267,7 @@ FT240-43 + FT240-52 + FT240-43
 Reduces losses by ~30-40%
 Keeps temperatures under 80°C on all bands
 Use 6 turns per stack, spaced evenly across the cores
+RG-316 Coax or TFLEX-405.
 Cost: ~$45 additional for third core
 
 ### Choking Impedance — 6 Turns on Triple Stack (FT240-43 + FT240-52 + FT240-43)
