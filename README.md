@@ -250,8 +250,36 @@
 - Stacked configuration brings all bands to "Excellent" rating
 - Dramatic improvement in common mode rejection
 
+
+
 ### Common Mode Current Impact:
 - **<10 mA:** Negligible RF in shack, excellent pattern
 - **10-30 mA:** Minor RF issues, good pattern
 - **30-60 mA:** Noticeable RF, pattern distortion possible
 - **>60 mA:** Significant RF problems, poor radiation pattern
+
+## Upgrade Path for 500W
+Recommended: Triple-stack hybrid configuration:
+
+FT240-43 + FT240-52 + FT240-43
+Reduces losses by ~30-40%
+Keeps temperatures under 80°C on all bands
+Use 6 turns per stack, spaced evenly across the cores
+Cost: ~$45 additional for third core
+
+### Choking Impedance — 6 Turns on Triple Stack (FT240-43 + FT240-52 + FT240-43)
+
+| Band  | Center Frequency (MHz) | Choking Impedance (Ω) |
+|-------|------------------------|------------------------|
+| 160m  | 1.85                   | 4,522 Ω               |
+| 80m   | 3.75                   | 9,167 Ω               |
+| 60m   | 5.3                    | 12,956 Ω              |
+| 40m   | 7.1                    | 17,356 Ω              |
+| 30m   | 10.1                   | 24,689 Ω              |
+| 20m   | 14.2                   | 34,712 Ω              |
+| 17m   | 18.1                   | 44,246 Ω              |
+| 15m   | 21.2                   | 51,823 Ω              |
+| 10m   | 28.5                   | 69,668 Ω              |
+| 6m    | 50.0                   | 122,225 Ω             |
+| 4m    | 70.0                   | 171,115 Ω             |
+
