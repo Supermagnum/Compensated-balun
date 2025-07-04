@@ -1,4 +1,10 @@
+# This antenna is a very good performer if:
+You live in a urban enviroment.
+Cannot have any big towers.
+Because of the nature this antenna does not pick up a lot of unwanted noise that exists in urban enviroments.
+
 # Loop Antenna SWR Analysis - FT8 Frequencies
+
 
 ## Configuration
 - **Loop circumference:** 67.6 meters
@@ -67,6 +73,10 @@
 4. **Loop height and environment** will significantly affect actual SWR values.
 
 5. The **67.6m circumference** represents an optimal compromise for multiband FT8 operation.
+
+# without a ladder line,-  
+Then it needs to be 83.9 meters long and  the 4:1 balun directly connected to the loop.  
+The ladder line just makes it easy to get it a bit away from a house.  Computers, phone chargers etc do make a bit of noise.. And no RF exposure if you want to run 1KW!
 
 # Ladder Line Effects on Multiband Loop Antenna Performance
 
@@ -195,6 +205,13 @@ The 15m ladder line length provides good multiband performance with your 67.6m l
 - **Significant losses** on 6m due to high SWR
 
 The ladder line acts as a complex impedance transformer that varies dramatically with frequency, requiring a capable antenna tuner and proper balun selection for optimal performance across all bands.
+
+
+# Suggested Balun
+Dual FT240-61 cores with 5 turns on each core makes a very nice 4:1 guanella balun.
+Use #14 AWG PTFE wire, bifiliar turns ( paralell wires ).
+It needs a proper choke a close to the balun as possible:
+12 turns of  50 ohm PTFE coax on a FT240-51. 
 
 
 
