@@ -213,5 +213,7 @@ Use #14 AWG PTFE wire, bifiliar turns ( paralell wires ).
 It needs a proper choke a close to the balun as possible:
 12 turns of  50 ohm PTFE coax on a FT240-51. 
 
+Pictures are coming! 
+
 
 
