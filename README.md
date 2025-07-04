@@ -1,290 +1,200 @@
-# 4:1 Balun Voltage and Current Analysis
-## 30W Input Power, 200Ω Termination
+# Loop Antenna SWR Analysis - FT8 Frequencies
 
-### Basic Calculations for 4:1 Balun
-- **Input Power:** 30W
-- **Load Impedance:** 200Ω (balanced)
-- **Transformed Impedance:** 200Ω ÷ 4 = 50Ω (unbalanced side)
-- **Input Voltage:** V = √(P × Z) = √(30W × 50Ω) = 38.7V RMS
-- **Input Current:** I = P ÷ V = 30W ÷ 38.7V = 0.775A RMS
-- **Output Voltage:** V = √(P × Z) = √(30W × 200Ω) = 77.5V RMS
-- **Output Current:** I = P ÷ V = 30W ÷ 77.5V = 0.387A RMS
+## Configuration
+- **Loop circumference:** 67.6 meters
+- **Feedline:** 15 meters of 450Ω ladder line
+- **Loop velocity factor:** 0.97
+- **Ladder line velocity factor:** 0.92
+- **Feedline electrical length:** 13.8 meters
 
----
+## Calculations
 
-##  Coax connections, turns not shown:
-![Compensated Balun Point Image](https://github.com/Supermagnum/Compensated-balun/blob/main/punktbilde.jpg)
+### Wavelength Data
+| Band | Frequency (MHz) | Free Space λ (m) | Electrical λ in Loop+Feedline |
+|------|----------------|------------------|-------------------------------|
+| 80m  | 3.573          | 83.91           | 0.97λ                        |
+| 60m  | 5.357          | 55.96           | 1.46λ                        |
+| 40m  | 7.074          | 42.38           | 1.92λ                        |
+| 30m  | 10.136         | 29.57           | 2.75λ                        |
+| 20m  | 14.074         | 21.30           | 3.82λ                        |
+| 17m  | 18.100         | 16.56           | 4.92λ                        |
+| 15m  | 21.074         | 14.23           | 5.72λ                        |
+| 12m  | 24.915         | 12.03           | 6.77λ                        |
+| 10m  | 28.074         | 10.68           | 7.63λ                        |
+| 6m   | 50.313         | 5.96            | 13.67λ                       |
 
-The red blocks are the cores.
+### SWR Estimates
 
-RG-316 Coax or TFLEX-405.
+| Band | Electrical λ | Resonance Type | Estimated SWR | Performance |
+|------|-------------|----------------|---------------|-------------|
+| 80m  | 0.97λ       | ~1λ (fundamental) | **1.2:1** | Excellent |
+| 60m  | 1.46λ       | Between harmonics | **3.5:1** | Needs tuner |
+| 40m  | 1.92λ       | ~2λ (2nd harmonic) | **1.5:1** | Excellent |
+| 30m  | 2.75λ       | Between harmonics | **4.2:1** | Needs tuner |
+| 20m  | 3.82λ       | ~4λ (4th harmonic) | **1.8:1** | Good |
+| 17m  | 4.92λ       | ~5λ (5th harmonic) | **2.3:1** | Acceptable |
+| 15m  | 5.72λ       | ~6λ (6th harmonic) | **2.8:1** | May need tuner |
+| 12m  | 6.77λ       | ~7λ (7th harmonic) | **3.1:1** | Needs tuner |
+| 10m  | 7.63λ       | ~8λ (8th harmonic) | **2.1:1** | Good |
+| 6m   | 13.67λ      | ~14λ (14th harmonic) | **4.5:1** | Needs tuner |
 
-## Configuration 1: 2× FT240-52 Stacked Cores
+## Summary
 
-### RG-316 Coax Winding (3 turns through both cores)
-| Band | Frequency | Efficiency | Power Loss | Input V/I | Output V/I | Core Temp Rise |
-|------|-----------|------------|------------|-----------|------------|----------------|
-| 80m | 3.5 MHz | 88% | 3.6W | 38.7V/0.775A | 72.7V/0.363A | 15-20°C |
-| 70m | 4.0 MHz | 90% | 3.0W | 38.7V/0.775A | 73.5V/0.368A | 12-18°C |
-| 60m | 5.3 MHz | 93% | 2.1W | 38.7V/0.775A | 74.8V/0.374A | 8-12°C |
-| 30m | 10.1 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 20m | 14.2 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 15m | 21.2 MHz | 98% | 0.6W | 38.7V/0.775A | 76.7V/0.384A | 2-3°C |
-| 10m | 28.5 MHz | 98% | 0.6W | 38.7V/0.775A | 76.7V/0.384A | 2-3°C |
-| 6m | 50-54 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-4°C |
-| 4m | 70-72 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
+### Bands with SWR < 2:1 (No tuner needed)
+- **80m FT8:** 1.2:1 SWR - Excellent
+- **40m FT8:** 1.5:1 SWR - Excellent  
+- **20m FT8:** 1.8:1 SWR - Good
 
-### #14 AWG Bifilar Winding (6 turns bifilar through both cores)
-| Band | Frequency | Efficiency | Power Loss | Input V/I | Output V/I | Core Temp Rise |
-|------|-----------|------------|------------|-----------|------------|----------------|
-| 80m | 3.5 MHz | 90% | 3.0W | 38.7V/0.775A | 73.5V/0.368A | 12-18°C |
-| 70m | 4.0 MHz | 92% | 2.4W | 38.7V/0.775A | 74.3V/0.372A | 10-15°C |
-| 60m | 5.3 MHz | 94% | 1.8W | 38.7V/0.775A | 75.1V/0.376A | 7-10°C |
-| 30m | 10.1 MHz | 95% | 1.5W | 38.7V/0.775A | 75.5V/0.378A | 5-8°C |
-| 20m | 14.2 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 15m | 21.2 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 10m | 28.5 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 6m | 50-54 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 4m | 70-72 MHz | 95% | 1.5W | 38.7V/0.775A | 75.5V/0.378A | 5-8°C |
+### Bands with SWR 2-3:1 (Tuner recommended)
+- **17m FT8:** 2.3:1 SWR - Acceptable
+- **15m FT8:** 2.8:1 SWR - May work without tuner
+- **10m FT8:** 2.1:1 SWR - Good
 
----
+### Bands with SWR > 3:1 (Tuner required)
+- **60m FT8:** 3.5:1 SWR - Needs tuner
+- **30m FT8:** 4.2:1 SWR - Needs tuner
+- **12m FT8:** 3.1:1 SWR - Needs tuner
+- **6m FT8:** 4.5:1 SWR - Needs tuner
 
-## Configuration 2: 2× FT240-43 Stacked Cores
+## Notes
 
-### RG-316 Coax Winding (3 turns through both cores)
-| Band | Frequency | Efficiency | Power Loss | Input V/I | Output V/I | Core Temp Rise |
-|------|-----------|------------|------------|-----------|------------|----------------|
-| 80m | 3.5 MHz | 95% | 1.5W | 38.7V/0.775A | 75.5V/0.378A | 5-8°C |
-| 70m | 4.0 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 60m | 5.3 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 30m | 10.1 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 20m | 14.2 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 15m | 21.2 MHz | 94% | 1.8W | 38.7V/0.775A | 75.1V/0.376A | 7-10°C |
-| 10m | 28.5 MHz | 92% | 2.4W | 38.7V/0.775A | 74.3V/0.372A | 10-15°C |
-| 6m | 50-54 MHz | 88% | 3.6W | 38.7V/0.775A | 72.7V/0.363A | 15-20°C |
-| 4m | 70-72 MHz | 85% | 4.5W | 38.7V/0.775A | 71.4V/0.357A | 18-25°C |
+1. **SWR estimates** are theoretical based on loop theory. Actual values may vary due to ground effects, nearby objects, and construction details.
 
-### #14 AWG Bifilar Winding (6 turns bifilar through both cores)
-| Band | Frequency | Efficiency | Power Loss | Input V/I | Output V/I | Core Temp Rise |
-|------|-----------|------------|------------|-----------|------------|----------------|
-| 80m | 3.5 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 70m | 4.0 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 60m | 5.3 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 30m | 10.1 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 20m | 14.2 MHz | 95% | 1.5W | 38.7V/0.775A | 75.5V/0.378A | 5-8°C |
-| 15m | 21.2 MHz | 93% | 2.1W | 38.7V/0.775A | 74.8V/0.374A | 8-12°C |
-| 10m | 28.5 MHz | 91% | 2.7W | 38.7V/0.775A | 73.9V/0.370A | 12-18°C |
-| 6m | 50-54 MHz | 87% | 3.9W | 38.7V/0.775A | 72.3V/0.361A | 16-22°C |
-| 4m | 70-72 MHz | 84% | 4.8W | 38.7V/0.775A | 71.0V/0.355A | 20-28°C |
+2. **Excellent performance** on 80m, 40m, and 20m FT8 frequencies due to harmonic resonance.
 
----
+3. **Antenna tuner recommended** for full-band coverage, especially on 60m, 30m, 12m, and 6m.
 
-## Configuration 3: Hybrid Stack (FT240-43 + FT240-52)
+4. **Loop height and environment** will significantly affect actual SWR values.
 
-### RG-316 Coax Winding (3 turns through both cores)
-| Band | Frequency | Efficiency | Power Loss | Input V/I | Output V/I | Core Temp Rise |
-|------|-----------|------------|------------|-----------|------------|----------------|
-| 80m | 3.5 MHz | 92% | 2.4W | 38.7V/0.775A | 74.3V/0.372A | 10-15°C |
-| 70m | 4.0 MHz | 94% | 1.8W | 38.7V/0.775A | 75.1V/0.376A | 7-10°C |
-| 60m | 5.3 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 30m | 10.1 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 20m | 14.2 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 15m | 21.2 MHz | 97% | 0.9W | 38.7V/0.775A | 76.3V/0.382A | 3-5°C |
-| 10m | 28.5 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 6m | 50-54 MHz | 94% | 1.8W | 38.7V/0.775A | 75.1V/0.376A | 7-10°C |
-| 4m | 70-72 MHz | 92% | 2.4W | 38.7V/0.775A | 74.3V/0.372A | 10-15°C |
+5. The **67.6m circumference** represents an optimal compromise for multiband FT8 operation.
 
-### #14 AWG Bifilar Winding (6 turns bifilar through both cores)
-| Band | Frequency | Efficiency | Power Loss | Input V/I | Output V/I | Core Temp Rise |
-|------|-----------|------------|------------|-----------|------------|----------------|
-| 80m | 3.5 MHz | 94% | 1.8W | 38.7V/0.775A | 75.1V/0.376A | 7-10°C |
-| 70m | 4.0 MHz | 95% | 1.5W | 38.7V/0.775A | 75.5V/0.378A | 5-8°C |
-| 60m | 5.3 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 30m | 10.1 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 20m | 14.2 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 15m | 21.2 MHz | 96% | 1.2W | 38.7V/0.775A | 75.9V/0.380A | 4-6°C |
-| 10m | 28.5 MHz | 95% | 1.5W | 38.7V/0.775A | 75.5V/0.378A | 5-8°C |
-| 6m | 50-54 MHz | 93% | 2.1W | 38.7V/0.775A | 74.8V/0.374A | 8-12°C |
-| 4m | 70-72 MHz | 91% | 2.7W | 38.7V/0.775A | 73.9V/0.370A | 12-18°C |
+# Ladder Line Effects on Multiband Loop Antenna Performance
 
----
+## Key Principles
 
-## Key Performance Summary
+### 1. Impedance Transformation
+The ladder line transforms the antenna feed point impedance presented to the ATU due to high SWR on the line, and the length variation will change the impedance presented to the ATU. The ladder line is always mismatched at the antenna, so always has standing waves (impedance variations) along its length, and the impedance the balun and tuner sees might be 20 ohms or 3500 ohms or anything between, and it changes with frequency and line length.
 
-### Best Overall Performance: Hybrid Stack (FT240-43 + FT240-52)
-- **Broadband efficiency:** 92-97% across all bands
-- **Maximum power loss:** 2.4W (manageable heating)
-- **Optimal for:** Multi-band operation 80-4m
+### 2. Frequency-Dependent Behavior
+The feedline will transform that impedance continuously along its length, repeating values every half wavelength of line. This means the impedance presented to your tuner changes dramatically as you move across bands.
 
-### Low Band Specialist: 2× FT240-43
-- **Best for 80m/70m:** 95-97% efficiency
-- **Higher losses on VHF:** Up to 4.8W on 4m band
+## Band-by-Band Effects (67.6m Loop + 15m Ladder Line)
 
-### High Band Specialist: 2× FT240-52
-- **Best for 6m/4m:** 96-97% efficiency  
-- **Higher losses on 80m:** Up to 3.6W
+### 80 Meters (3.573 MHz)
+- **Ladder line electrical length:** 0.18λ
+- **Effect:** Moderate impedance transformation
+- **Typical impedance at tuner:** 200-800Ω
+- **SWR on ladder line:** ~3-5:1
+- **Performance:** Excellent - loop resonant, manageable impedance
 
-### Winding Comparison
-- **RG-316 Coax:** Generally better high-frequency performance
-- **#14 AWG Bifilar:** Slightly better low-frequency performance, more economical
+### 60 Meters (5.357 MHz)
+- **Ladder line electrical length:** 0.27λ  
+- **Effect:** Approaching quarter-wave (worst case)
+- **Typical impedance at tuner:** 50-150Ω or 1500-3000Ω
+- **SWR on ladder line:** ~8-12:1
+- **Performance:** Challenging - impedance extremes possible
 
-### Thermal Considerations
-- All configurations keep core temperature rise under 28°C at 30W
-- Hybrid stack provides best thermal balance across all bands
-- Adequate for continuous 30W operation with minimal cooling
+### 40 Meters (7.074 MHz)
+- **Ladder line electrical length:** 0.35λ
+- **Effect:** Beyond quarter-wave, moderate transformation
+- **Typical impedance at tuner:** 300-1200Ω
+- **SWR on ladder line:** ~4-6:1
+- **Performance:** Good - loop near 2λ resonance
 
----
+### 30 Meters (10.136 MHz)
+- **Ladder line electrical length:** 0.50λ
+- **Effect:** Half-wave - repeats antenna impedance
+- **Typical impedance at tuner:** Same as loop feedpoint (~1500-3000Ω)
+- **SWR on ladder line:** ~10-15:1
+- **Performance:** Moderate - high but predictable impedance
 
-## Common Mode Choking Impedance Analysis
+### 20 Meters (14.074 MHz)
+- **Ladder line electrical length:** 0.71λ
+- **Effect:** Moderate transformation
+- **Typical impedance at tuner:** 400-1000Ω
+- **SWR on ladder line:** ~3-5:1
+- **Performance:** Good - loop near 4λ resonance
 
-### Configuration 1: 2× FT240-52 Stacked Cores
+### 17 Meters (18.100 MHz)
+- **Ladder line electrical length:** 0.91λ
+- **Effect:** Approaching full wavelength
+- **Typical impedance at tuner:** 600-1500Ω
+- **SWR on ladder line:** ~5-8:1
+- **Performance:** Moderate - manageable impedance
 
-#### RG-316 Coax Winding (3 turns through both cores)
-| Band | Frequency | Choking Impedance | Performance Rating | CM Current @ 30W |
-|------|-----------|-------------------|-------------------|------------------|
-| 80m | 3.5 MHz | 1200-1800Ω | Good | 32-48 mA |
-| 70m | 4.0 MHz | 1500-2200Ω | Excellent | 28-41 mA |
-| 60m | 5.3 MHz | 2800-3800Ω | Excellent | 14-19 mA |
-| 30m | 10.1 MHz | 5500-7000Ω | Excellent | 7-9 mA |
-| 20m | 14.2 MHz | 7500-9500Ω | Excellent | 5-6 mA |
-| 15m | 21.2 MHz | 9000-11000Ω | Excellent | 4-5 mA |
-| 10m | 28.5 MHz | 10000-12000Ω | Excellent | 4-5 mA |
-| 6m | 50-54 MHz | 8000-10000Ω | Excellent | 5-6 mA |
-| 4m | 70-72 MHz | 6000-8000Ω | Excellent | 6-8 mA |
+### 15 Meters (21.074 MHz)
+- **Ladder line electrical length:** 1.07λ
+- **Effect:** Just over one wavelength
+- **Typical impedance at tuner:** 500-1200Ω
+- **SWR on ladder line:** ~6-10:1
+- **Performance:** Moderate - reasonable for tuner
 
-#### #14 AWG Bifilar Winding (6 turns bifilar through both cores)
-| Band | Frequency | Choking Impedance | Performance Rating | CM Current @ 30W |
-|------|-----------|-------------------|-------------------|------------------|
-| 80m | 3.5 MHz | 1500-2200Ω | Excellent | 28-41 mA |
-| 70m | 4.0 MHz | 1800-2600Ω | Excellent | 24-35 mA |
-| 60m | 5.3 MHz | 3200-4200Ω | Excellent | 12-16 mA |
-| 30m | 10.1 MHz | 6000-8000Ω | Excellent | 6-8 mA |
-| 20m | 14.2 MHz | 8500-10500Ω | Excellent | 5-6 mA |
-| 15m | 21.2 MHz | 10000-12000Ω | Excellent | 4-5 mA |
-| 10m | 28.5 MHz | 11000-13000Ω | Excellent | 4-5 mA |
-| 6m | 50-54 MHz | 7000-9000Ω | Excellent | 5-7 mA |
-| 4m | 70-72 MHz | 5500-7500Ω | Excellent | 7-9 mA |
+### 10 Meters (28.074 MHz)
+- **Ladder line electrical length:** 1.42λ
+- **Effect:** 1.5λ approaching - some transformation
+- **Typical impedance at tuner:** 300-800Ω
+- **SWR on ladder line:** ~4-6:1
+- **Performance:** Good - loop near 8λ resonance
 
----
+### 6 Meters (50.313 MHz)
+- **Ladder line electrical length:** 2.55λ
+- **Effect:** Multiple wavelengths - complex transformation
+- **Typical impedance at tuner:** Highly variable (50-2000Ω)
+- **SWR on ladder line:** ~8-20:1
+- **Performance:** Challenging - high losses, unpredictable impedance
 
-### Configuration 2: 2× FT240-43 Stacked Cores
+## Critical Ladder Line Effects
 
-#### RG-316 Coax Winding (3 turns through both cores)
-| Band | Frequency | Choking Impedance | Performance Rating | CM Current @ 30W |
-|------|-----------|-------------------|-------------------|------------------|
-| 80m | 3.5 MHz | 2200-3200Ω | Excellent | 19-28 mA |
-| 70m | 4.0 MHz | 2800-3800Ω | Excellent | 16-22 mA |
-| 60m | 5.3 MHz | 4200-5500Ω | Excellent | 11-15 mA |
-| 30m | 10.1 MHz | 5800-7200Ω | Excellent | 7-9 mA |
-| 20m | 14.2 MHz | 4500-6000Ω | Excellent | 8-11 mA |
-| 15m | 21.2 MHz | 3200-4500Ω | Excellent | 11-15 mA |
-| 10m | 28.5 MHz | 2400-3600Ω | Excellent | 17-25 mA |
-| 6m | 50-54 MHz | 1200-1800Ω | Good | 34-51 mA |
-| 4m | 70-72 MHz | 800-1200Ω | Good | 51-77 mA |
+### 1. Loss Mechanisms
+High SWR on the feedline will cause excessive loss unless the matched loss of the feedline is extremely low. High SWR, common in multiband antennas, increases feedline loss, particularly at higher frequencies or with longer feedlines.
 
-#### #14 AWG Bifilar Winding (6 turns bifilar through both cores)
-| Band | Frequency | Choking Impedance | Performance Rating | CM Current @ 30W |
-|------|-----------|-------------------|-------------------|------------------|
-| 80m | 3.5 MHz | 2800-3800Ω | Excellent | 16-22 mA |
-| 70m | 4.0 MHz | 3200-4200Ω | Excellent | 15-20 mA |
-| 60m | 5.3 MHz | 4800-6200Ω | Excellent | 10-13 mA |
-| 30m | 10.1 MHz | 6500-8500Ω | Excellent | 6-8 mA |
-| 20m | 14.2 MHz | 5200-6800Ω | Excellent | 7-10 mA |
-| 15m | 21.2 MHz | 3800-5200Ω | Excellent | 12-16 mA |
-| 10m | 28.5 MHz | 2800-4200Ω | Excellent | 15-22 mA |
-| 6m | 50-54 MHz | 1400-2200Ω | Excellent | 28-44 mA |
-| 4m | 70-72 MHz | 1000-1500Ω | Good | 41-61 mA |
+**Loss Estimates:**
+- **80m-20m:** 0.5-2 dB additional loss
+- **17m-10m:** 1-3 dB additional loss  
+- **6m:** 3-6 dB additional loss (significant)
 
----
+### 2. Impedance Extremes
+High SWR on the feed-line turns it into an impedance transformer, which presents the balun (and tuner), at almost all combinations of LL length and frequency, with either low-Z (high current) or high-Z (high voltage) challenges.
 
-### Configuration 3: Hybrid Stack (FT240-43 + FT240-52)
+**Problematic Lengths:**
+- **Quarter-wave multiples:** Create impedance inversions
+- **Near 60m:** Ladder line ~0.27λ can create extreme impedances
+- **6m:** Multiple wavelengths create unpredictable impedances
 
-#### RG-316 Coax Winding (3 turns through both cores)
-| Band | Frequency | Choking Impedance | Performance Rating | CM Current @ 30W |
-|------|-----------|-------------------|-------------------|------------------|
-| 80m | 3.5 MHz | 1800-2500Ω | Excellent | 25-34 mA |
-| 70m | 4.0 MHz | 2200-3000Ω | Excellent | 20-28 mA |
-| 60m | 5.3 MHz | 3500-4650Ω | Excellent | 13-18 mA |
-| 30m | 10.1 MHz | 5650-7100Ω | Excellent | 7-9 mA |
-| 20m | 14.2 MHz | 6000-7750Ω | Excellent | 6-8 mA |
-| 15m | 21.2 MHz | 6100-7750Ω | Excellent | 6-8 mA |
-| 10m | 28.5 MHz | 6200-7900Ω | Excellent | 6-8 mA |
-| 6m | 50-54 MHz | 4600-5900Ω | Excellent | 8-11 mA |
-| 4m | 70-72 MHz | 3400-4500Ω | Excellent | 11-15 mA |
+### 3. Tuner Challenges
+Matching the resulting high impedance is far easier for a tuner and losses within the tuner are also minimized when using appropriate balun ratios.
 
-#### #14 AWG Bifilar Winding (6 turns bifilar through both cores)
-| Band | Frequency | Choking Impedance | Performance Rating | CM Current @ 30W |
-|------|-----------|-------------------|-------------------|------------------|
-| 80m | 3.5 MHz | 2150-2900Ω | Excellent | 21-29 mA |
-| 70m | 4.0 MHz | 2500-3400Ω | Excellent | 18-25 mA |
-| 60m | 5.3 MHz | 4000-5300Ω | Excellent | 12-16 mA |
-| 30m | 10.1 MHz | 6250-8250Ω | Excellent | 6-8 mA |
-| 20m | 14.2 MHz | 6850-8850Ω | Excellent | 6-7 mA |
-| 15m | 21.2 MHz | 7050-9050Ω | Excellent | 6-7 mA |
-| 10m | 28.5 MHz | 7000-9000Ω | Excellent | 6-7 mA |
-| 6m | 50-54 MHz | 5250-6750Ω | Excellent | 7-9 mA |
-| 4m | 70-72 MHz | 4250-5750Ω | Excellent | 9-12 mA |
+**Tuner Requirements:**
+- **4:1 or 6:1 balun** recommended for most bands
+- **Wide impedance range capability** needed (20-3500Ω)
+- **High voltage handling** for high-Z presentations
 
----
+## Optimization Strategies
 
-## Common Mode Choking Performance Summary
+### 1. Ladder Line Length Selection
+- **Avoid quarter-wave multiples** on primary bands
+- **15m length** is good compromise for 80-10m
+- **Consider 22m or 30m** for different impedance presentations
 
-### Performance Rating Scale:
-- **Excellent:** >2000Ω (CM current <31 mA @ 30W)
-- **Good:** 1000-2000Ω (CM current 31-61 mA @ 30W)
-- **Poor:** <1000Ω (CM current >61 mA @ 30W)
+### 2. Balun Selection
+- **4:1 current balun** for most applications
+- **6:1 voltage balun** for consistently high impedances
+- **Quality matters** - handle high SWR without saturation
 
-### Key Findings:
+### 3. Antenna Tuner Requirements
+- **Wide impedance range** (10-3000Ω minimum)
+- **Balanced output** preferred
+- **High power handling** for voltage/current extremes
 
-**Best Overall Choking:** #14 AWG Bifilar with Hybrid Stack
-- Excellent performance across all bands
-- Lowest common mode currents
-- Most consistent choking impedance
+## Summary
 
-**Low Band Champion:** 2× FT240-43 cores
-- Superior choking on 80m and 70m bands
-- Mix 43 material optimized for lower frequencies
+The 15m ladder line length provides good multiband performance with your 67.6m loop, but expect:
+- **Excellent performance** on 80m, 40m, 20m, 10m
+- **Moderate performance** on 17m, 15m  
+- **Challenging performance** on 60m, 30m, 6m
+- **Significant losses** on 6m due to high SWR
 
-**High Band Performance:** All configurations excellent above 30m
-- Choking impedance >3000Ω on most HF bands
-- Common mode currents well controlled
-
-**Critical Advantage of Stacked Cores:**
-- Single cores would show poor performance on 80m/70m
-- Stacked configuration brings all bands to "Excellent" rating
-- Dramatic improvement in common mode rejection
+The ladder line acts as a complex impedance transformer that varies dramatically with frequency, requiring a capable antenna tuner and proper balun selection for optimal performance across all bands.
 
 
-
-### Common Mode Current Impact:
-- **<10 mA:** Negligible RF in shack, excellent pattern
-- **10-30 mA:** Minor RF issues, good pattern
-- **30-60 mA:** Noticeable RF, pattern distortion possible
-- **>60 mA:** Significant RF problems, poor radiation pattern
-
-## Upgrade Path for 500W
-Recommended: Triple-stack hybrid configuration:
-
-FT240-43 + FT240-52 + FT240-43
-Reduces losses by ~30-40%
-Keeps temperatures under 80°C on all bands
-Use 6 turns per stack, spaced evenly across the cores
-RG-316 Coax or TFLEX-405.
-Cost: ~$45 additional for third core
-
-### Choking Impedance — 6 Turns on Triple Stack (FT240-43 + FT240-52 + FT240-43)
-
-| Band  | Center Frequency (MHz) | Choking Impedance (Ω) |
-|-------|------------------------|------------------------|
-| 160m  | 1.85                   | 4,522 Ω               |
-| 80m   | 3.75                   | 9,167 Ω               |
-| 60m   | 5.3                    | 12,956 Ω              |
-| 40m   | 7.1                    | 17,356 Ω              |
-| 30m   | 10.1                   | 24,689 Ω              |
-| 20m   | 14.2                   | 34,712 Ω              |
-| 17m   | 18.1                   | 44,246 Ω              |
-| 15m   | 21.2                   | 51,823 Ω              |
-| 10m   | 28.5                   | 69,668 Ω              |
-| 6m    | 50.0                   | 122,225 Ω             |
-| 4m    | 70.0                   | 171,115 Ω             |
 
