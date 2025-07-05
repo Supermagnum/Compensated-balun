@@ -209,7 +209,7 @@ The ladder line acts as a complex impedance transformer that varies dramatically
 
 # Suggested Balun
 Dual FT240-61 cores with 5 turns on each core makes a very nice 4:1 guanella balun.
-Use #14 AWG PTFE wire, bifiliar turns ( paralell wires ).
+Use #14 AWG PTFE wire, bifiliar turns ( two paralell wires ).
 It needs a proper choke a close to the balun as possible:
 12 turns of  50 ohm PTFE coax on a FT240-51. 
 
