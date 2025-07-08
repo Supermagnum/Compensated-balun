@@ -2,6 +2,10 @@
 You live in a urban enviroment.
 Cannot have any big towers.
 Because of the nature this antenna does not pick up a lot of unwanted noise that exists in urban enviroments.
+Its optimized for FT8 frequencies.
+
+# SSB Version:
+https://github.com/Supermagnum/Compensated-balun/blob/main/SSB-loop.md 
 
 # Loop Antenna SWR Analysis - FT8 Frequencies
 
