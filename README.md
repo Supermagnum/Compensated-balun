@@ -1,6 +1,7 @@
 # This antenna is a very good performer if:
 You live in a urban enviroment.
 Cannot have any big towers.
+Its stealthy,- because a #14 awg wire is enough. 
 Because of the nature this antenna does not pick up a lot of unwanted noise that exists in urban enviroments.
 Its optimized for FT8 frequencies.
 
