@@ -67,7 +67,7 @@ https://github.com/Supermagnum/Compensated-balun/blob/main/SSB-loop.md
 - **12m FT8:** 3.1:1 SWR - Needs tuner
 - **6m FT8:** 4.5:1 SWR - Needs tuner
 
-  ** 160 meter long loop
+  ** ~160 meter long loop
   https://github.com/Supermagnum/Compensated-balun/blob/main/160m.md
 
 ## Notes
